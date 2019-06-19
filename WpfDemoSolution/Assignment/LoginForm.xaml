@@ -1,0 +1,58 @@
+﻿<Window x:Class="WpfDemoSolution.Assignment.LoginForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfDemoSolution.Assignment"
+        mc:Ignorable="d"
+        Title="LoginForm" Height="450" Width="800">
+    <StackPanel>
+        <StackPanel.Resources>
+            <DataTemplate x:Key="userinfoTemplate">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding UserName}" Height="35" Width="90" Padding="0, 5, 0, 0"/>
+                    <TextBlock Text="{Binding Age}" Height="35" Width="90" Padding="0, 5, 0, 0" Margin="5, 0, 0, 0"/>
+                    <TextBlock Text="{Binding Color}" Height="35" Width="90" Padding="0, 5, 0, 0" Margin="5, 0, 0, 0"/>
+                    <Rectangle Height="35" Width="90" Margin="5, 0, 0, 0" Fill="{Binding Color}"/>
+                </StackPanel>
+
+            </DataTemplate>
+            <Style TargetType="TextBox">
+                <Setter Property="Background" Value="Azure"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="Arial"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="Background" Value="Beige"/>
+            </Style>
+        </StackPanel.Resources>
+
+        <StackPanel Orientation="Horizontal">
+        <TextBlock Text="UserName" Margin="100,100,0,0" Height="16" Width="55"></TextBlock>
+            <TextBox Width="200" Text="{Binding UserName}" Margin="40,100,0,0" VerticalAlignment="Top" Name="username"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0,10">
+            <TextBlock Text="Age" Margin="100,0,0,0"></TextBlock>
+            <TextBox Width="200" Margin="75,0" Name="age" Text="{Binding Age, Mode=OneWay}"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Favourite color" Margin="100,0"></TextBlock>
+            <TextBox Width="200" Margin="-83,0,0,0" Name="color" Text="{Binding Color, Mode=OneWay}"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0,10">
+            <Button Margin="200,0" Name="login" Click="login_Click">Add</Button>
+            <Button Margin="-100,0,50,0" Name="cancel" Click="Cancel_Click">Cancel</Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Height="124" Margin="120,0,267,0">
+            <ListBox Grid.Row="1" Width="400" x:Name="listbox" SelectedItem="Listbox_MouseDoubleClick" ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{Binding}" ItemTemplate="{StaticResource userinfoTemplate}" IsSynchronizedWithCurrentItem="True"></ListBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="70,10">
+            <TextBlock>UserName</TextBlock>
+            <TextBox Width="100" Margin="10,0" Name="nusername" Text="{Binding UserName}"></TextBox>
+            <TextBlock Margin="10,0">Age</TextBlock>
+            <TextBox Width="100" Margin="10,0" Name="nage" Text="{Binding Age}"></TextBox>
+            <TextBlock Margin="10,0">Favourite color</TextBlock>
+            <TextBox Width="100" Margin="10,0" Name="ncolor" Text="{Binding Color}"></TextBox>
+        </StackPanel>
+    </StackPanel>
+</Window>
